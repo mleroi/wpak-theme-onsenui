@@ -78,8 +78,7 @@ App.on( 'screen:showed', function( current_screen ) {
         $(pull_to_refresh).removeAttr('disabled');
         
         //Set scroll position from memory
-        var scroll_pos = Storage.get( 'scroll-pos', current_screen.fragment );
-        
+        var scroll_pos = Storage.get( 'scroll-pos', current_screen.component_id );
         if ( scroll_pos !== null ) {
             set_scroll_pos( scroll_pos );
         } else {
@@ -109,8 +108,7 @@ App.on( 'screen:showed', function( current_screen ) {
 App.on( 'screen:leave', function( current_screen, queried_screen ) {
     //Memorize scroll position:
     if ( current_screen.screen_type == 'list' ) {
-        var fragment = current_screen.fragment ? current_screen.fragment : TemplateTags.getDefaultRouteLink().substr(1); //Hack while we fix default screen fragment
-        Storage.set( 'scroll-pos', fragment, $('#page1 .page__content').scrollTop() );
+        Storage.set( 'scroll-pos', current_screen.component_id, $('#page1 .page__content').scrollTop() );
     }
 } );
 
