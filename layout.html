@@ -1,0 +1,27 @@
+<ons-splitter>
+    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+        <ons-page>
+            <%= menu %>
+        </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content">
+        <ons-page id="page1">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="menu-button">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center" id="nav-title"></div>
+            </ons-toolbar>
+            <ons-pull-hook id="pull-to-refresh">
+                Pull to refresh
+            </ons-pull-hook>
+            <ons-progress-bar indeterminate style="display:none" id="progress-bar"></ons-progress-bar>
+            <%= content %>
+            <div class="toast toast--material" id="toast" style="display:none">
+                <div class="toast__message toast--material__message" id="toast-message"></div>
+            </div>
+        </ons-page>
+    </ons-splitter-content>
+</ons-splitter>

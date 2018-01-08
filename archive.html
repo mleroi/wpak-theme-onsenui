@@ -1,0 +1,32 @@
+
+<% if( posts.length ) { %>
+
+    <ons-list class="archive">
+        
+        <% _.each( posts, function( post ){ %>
+        
+            <ons-list-item tappable data-link="<%= TemplateTags.getPostLink( post.id ) %>">
+                
+                <% if(  post.thumbnail && post.thumbnail.src && post.thumbnail.src.length ){ %>
+                    <div class="left">
+                        <img class="list-item__thumbnail" src="<%= post.thumbnail.src %>">
+                    </div>
+                <% } %>
+
+                <div class="center">
+                  <span class="list-item__title"><%= post.title %></span><span class="list-item__subtitle"><%= post.excerpt %></span>
+                </div>
+            
+            </ons-list-item>
+
+        <% }); %>
+        
+    </ons-list>
+
+    <% if( TemplateTags.displayGetMoreLink() ){ %>
+        <button class="get-more button">Get more posts <small>(<%= TemplateTags.getMoreLinkNbLeft() %> left)</small></button>
+    <% } %>
+        
+<% } else { %>
+    <p>No post found</p>
+<% } %>

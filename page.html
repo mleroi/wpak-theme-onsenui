@@ -1,0 +1,24 @@
+
+<div id="content" class="content single-template page-template card">
+
+    <div class="post-title">
+
+        <h1 class="card__title">
+            <%= post.title %>
+        </h1>
+
+    </div>
+
+    <% if(  post.thumbnail && post.thumbnail.src && post.thumbnail.src.length ){ %>
+
+        <img class="post-thumbnail" src="<%= post.thumbnail.src %>" onerror="displayDefaultImage(this);" />
+        
+    <% } %>	
+            
+    <div class="single-content card__content">
+
+        <%= post.content %>
+
+    </div>
+
+</div>
