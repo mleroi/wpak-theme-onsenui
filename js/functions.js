@@ -57,7 +57,21 @@ pull_to_refresh.addEventListener('changestate', function(event) {
 } );
 
 pull_to_refresh.onAction = function(done) {
-    App.refresh( done, done );
+    var current_screen = App.getCurrentScreen();
+    if ( current_screen.screen_type == 'list' ) {
+        $progress_bar.show();
+        App.refreshComponent( {
+            success: function(){
+                $progress_bar.hide();
+                done();
+                App.rerenderCurrentScreen();
+            },
+            error: function(){
+                $progress_bar.hide();
+                done();
+            }
+        });
+    }
 };
 
 /**
